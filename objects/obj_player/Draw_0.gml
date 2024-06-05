@@ -54,7 +54,7 @@ if weapon_equipped == weapon.shotgun
 	{
 		if firetimer < 15
 		{
-			draw_sprite_ext(spr_shotgun,firetimer,x+shake_xoffset,y-3+shake_yoffset,1,i,gun_angle,c_white,1)
+			draw_sprite_ext(shotgun_sprite,firetimer,x+shake_xoffset,y-3+shake_yoffset,1,i,gun_angle,c_white,1)
 		}
 		else
 		{
@@ -68,7 +68,7 @@ if weapon_equipped == weapon.shotgun
 			}
 			//draw_sprite_ext(spr_shotgun,0,x+shake_xoffset,y-3+shake_yoffset,1,image_xscale,point_direction(x,y-3,mouse_x,mouse_y),c_white,1)
 			
-			draw_sprite_ext(spr_shotgun,0,x+shake_xoffset,y-3+shake_yoffset-i,image_xscale,1,0,c_white,1)
+			draw_sprite_ext(shotgun_sprite,0,x+shake_xoffset,y-3+shake_yoffset-i,image_xscale,1,0,c_white,1)
 		}
 	}
 }
