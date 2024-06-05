@@ -16,6 +16,9 @@ spread_range[0] = irandom_range(-15,15)
 ammo = 3
 gun_angle = 0
 shootcd = 0
+shotgun_sprite = spr_shotgun
+
+
 
 airshots = 0
 reloadmaxtime = 15
