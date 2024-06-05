@@ -492,14 +492,25 @@ if abs(current_xspeed - xspeed) < move_acc{current_xspeed = xspeed}
 //walls 
 if place_meeting(x+current_xspeed,y,obj_surface)
 {
-	while !place_meeting(x+sign(current_xspeed),y,obj_surface)
+	if place_meeting(x+current_xspeed,y-abs(current_xspeed),obj_surface)
 	{
-		x += sign(current_xspeed)
-		if current_xspeed > 0 {x = floor(x)}
-		if current_xspeed < 0 {x = ceil(x)}
+		while place_meeting(x+current_xspeed,y)
+		{
+			y--
+		}
+		
 	}
-	xspeed = 0
-	current_xspeed = 0
+	else
+	{
+		while !place_meeting(x+sign(current_xspeed),y,obj_surface)
+		{
+			x += sign(current_xspeed)
+			if current_xspeed > 0 {x = floor(x)}
+			if current_xspeed < 0 {x = ceil(x)}
+		}
+		xspeed = 0
+		current_xspeed = 0
+	}
 }
 
 //movement execution
