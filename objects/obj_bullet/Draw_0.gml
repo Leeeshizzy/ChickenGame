@@ -1,16 +1,11 @@
 var _speed = 10
-	if (lifetime < max_lifetime - abs(spread_range))
+	if (lifetime < max_lifetime - abs(spread_range/4))
 	{
 		x += (_speed * cos((dir+spread_range)*(pi/180)))
 		y -= (_speed * sin((dir+spread_range)*(pi/180)))
 		if place_meeting(x,y,obj_surface)
 		{
-			length = lifetime
-			lifetime = max_lifetime - abs(spread_range)
-		}
-		else
-		{
-			length = max_lifetime - abs(spread_range)
+			instance_destroy()
 		}
 		lifetime += 0.5
 		image_alpha -= 0
