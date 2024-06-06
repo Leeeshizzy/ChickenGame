@@ -175,6 +175,7 @@ switch(state)
 	firetimer = 60
 	if jumpkey{jump = 6}
 
+
 	//yspeed = clamp(yspeed, 0, infinity)
 	xspeed = 0
 	move_acc = 0.05
@@ -490,9 +491,9 @@ if current_xspeed < xspeed{current_xspeed += move_acc}
 if abs(current_xspeed - xspeed) < move_acc{current_xspeed = xspeed}
 
 //walls 
-if place_meeting(x+current_xspeed,y,obj_surface)
+if place_meeting(x+sign(current_xspeed),y,obj_surface)
 {
-	if !place_meeting(x+current_xspeed,y-abs(current_xspeed)-1,obj_surface)
+	if !place_meeting(x+sign(current_xspeed),y-abs(current_xspeed)-1,obj_surface)
 	{
 		while place_meeting(x+current_xspeed,y,obj_surface)
 		{
@@ -512,7 +513,7 @@ if place_meeting(x+current_xspeed,y,obj_surface)
 	}
 }
 
-if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+abs(current_xspeed)+1,obj_surface)
+if yspeed >= 0 && !place_meeting(x+sign(current_xspeed),y+1,obj_surface) && place_meeting(x+sign(current_xspeed),y+abs(current_xspeed)+1,obj_surface)
 {
 	while !place_meeting(x+current_xspeed,y+1,obj_surface)
 	{
