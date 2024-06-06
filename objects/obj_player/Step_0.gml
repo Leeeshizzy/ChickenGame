@@ -340,16 +340,16 @@ switch(weapon_equipped)
 	
 	if reloading = 1
 	{
-		reloadtime ++
+		reloadtime --
 		shotgun_sprite = spr_shotgun_rack
-		if reloadtime > 10
+		if reloadtime <= 0
 		{
 			reloading = 0
 		}
 	}
 	else
 	{
-		reloadtime = 0
+		reloadtime = 10
 		shotgun_sprite = spr_shotgun
 	}
 	
