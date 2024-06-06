@@ -511,7 +511,7 @@ if place_meeting(x+current_xspeed,y,obj_surface)
 		current_xspeed = 0
 	}
 }
-/*
+
 if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+abs(current_xspeed)+1,obj_surface)
 {
 	while !place_meeting(x+current_xspeed,y+1,obj_surface)
@@ -519,7 +519,7 @@ if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meet
 		y += 1
 	}
 }
-*/
+
 
 
 
