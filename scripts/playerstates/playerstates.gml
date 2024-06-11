@@ -4,7 +4,8 @@ enum playerstate
 	airborne,
 	fired,
 	sliding,
-	crawling
+	crawling,
+	walljump
 }
 
 enum weapon

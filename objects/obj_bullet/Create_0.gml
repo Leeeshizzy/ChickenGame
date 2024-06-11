@@ -1,5 +1,5 @@
 lifetime = 0
-max_lifetime = 60
+max_lifetime = 10
 dir = point_direction(obj_player.x,obj_player.y,mouse_x,mouse_y)
 
 xx = obj_player.x

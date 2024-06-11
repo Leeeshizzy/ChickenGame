@@ -43,14 +43,15 @@ if gun_angle > 90 && gun_angle < 270
 {
 	i = -1
 }
-if firetimer < 15
+if firetimer < 15 && state != playerstate.walljump
 {
-	image_xscale = i
+	i_xscale = i
 }
-draw_sprite_ext(sprite_index,image_index,x+shake_xoffset,y+shake_yoffset,image_xscale,image_yscale,0,c_white,1)
+
+draw_sprite_ext(sprite_index,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 if weapon_equipped == weapon.shotgun
 {
-	if state != playerstate.sliding && state != playerstate.crawling
+	if state != playerstate.sliding && state != playerstate.crawling && state != playerstate.walljump
 	{
 		if firetimer < 15
 		{
@@ -66,9 +67,9 @@ if weapon_equipped == weapon.shotgun
 					i=1
 				}
 			}
-			//draw_sprite_ext(spr_shotgun,0,x+shake_xoffset,y-3+shake_yoffset,1,image_xscale,point_direction(x,y-3,mouse_x,mouse_y),c_white,1)
+			//draw_sprite_ext(spr_shotgun,0,x+shake_xoffset,y-3+shake_yoffset,1,i_xscale,point_direction(x,y-3,mouse_x,mouse_y),c_white,1)
 			
-			draw_sprite_ext(shotgun_sprite,0,x+shake_xoffset,y-3+shake_yoffset-i,image_xscale,1,0,c_white,1)
+			draw_sprite_ext(shotgun_sprite,0,x+shake_xoffset,y-3+shake_yoffset-i,i_xscale,1,0,c_white,1)
 		}
 	}
 }
@@ -77,7 +78,7 @@ else
 	switch(sprite_index)
 	{
 		case spr_player:
-		draw_sprite_ext(spr_player_arm,image_index,x,y,image_xscale,image_yscale,0,c_white,1)
+		draw_sprite_ext(spr_player_arm,image_index,x,y,i_xscale,image_yscale,0,c_white,1)
 		break
 	}
 }
@@ -85,13 +86,13 @@ else
 switch(sprite_index)
 {
 	case spr_player:
-	draw_sprite_ext(spr_player_arm,image_index,x+shake_xoffset,y+shake_yoffset,image_xscale,image_yscale,0,c_white,1)
+	draw_sprite_ext(spr_player_arm,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 	break
 	case spr_player_fired:
-	draw_sprite_ext(spr_player_fired_arm,image_index,x+shake_xoffset,y+shake_yoffset,image_xscale,image_yscale,0,c_white,1)
+	draw_sprite_ext(spr_player_fired_arm,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 	break
 	case spr_player_walk_gun:
-	draw_sprite_ext(spr_player_walk_gun_arm,image_index,x+shake_xoffset,y+shake_yoffset,image_xscale,image_yscale,0,c_white,1)
+	draw_sprite_ext(spr_player_walk_gun_arm,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 	break
 }
 
@@ -104,7 +105,7 @@ switch(weapon_equipped)
 	draw_sprite(spr_bullets_ui,ammo,x,y-18)
 	draw_sprite(spr_bullets_ui,ammo,x,y-18)
 	reloaduimulti = reloadmaxtime/15
-	draw_sprite_part(spr_reload_ui,0,0,0,15-(reloadtime/reloaduimulti),1,x-7.5,y-14)
+	//draw_sprite_part(spr_reload_ui,0,0,0,15-(reloadtime/reloaduimulti),1,x-7.5,y-14)
 	break
 }
 

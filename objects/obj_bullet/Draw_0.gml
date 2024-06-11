@@ -1,5 +1,5 @@
 var _speed = 10
-	if (lifetime < max_lifetime - abs(spread_range/4))
+	if (lifetime < max_lifetime/* - abs(spread_range/6 )*/)
 	{
 		x += (_speed * cos((dir+spread_range)*(pi/180)))
 		y -= (_speed * sin((dir+spread_range)*(pi/180)))

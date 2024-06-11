@@ -23,38 +23,34 @@ else
 	airtime++
 	fall_acc = 0.2
 }
-//idk mask stuff
-if xspeed != 0
-{
-	image_xscale = sign(xspeed)
-}
+
+
 /*
 if mouse_x > x
 {
-	image_xscale = 1
+	i_xscale = 1
 }
 else
 {
-	image_xscale = -1
+	i_xscale = -1
 }
 */
-mask_index = spr_player
 
+mask_index = spr_player
 
 //hi
 
 
 // movement calculations
-//gravity
-yspeed += fall_acc
+//jumping
 if jump > 0{jump--}
+if jumpkey{jump = 6}
 // STATES MACHINE LETS FUCKING GO
 switch(state)
 {
 	//normal state like walking n stuff
 	case playerstate.normal:
 	xspeed = (rightkey - leftkey)*movespeed
-	if jumpkey{jump = 6}
 	// default state of being on ground and stuff pretty cool
 	if grounded
 	{
@@ -67,7 +63,7 @@ switch(state)
 		}
 		if jump >= 1
 		{
-			yspeed = -3
+			yspeed = -4.2
 			if abs(current_xspeed) > 1.4
 			{
 				audio_play_sound(snd_skid,8,false)
@@ -80,6 +76,18 @@ switch(state)
 
 		if current_xspeed != 0
 		{
+			movetime ++
+			
+			
+			if movetime >= 60
+			{
+				 movespeed = 2
+			}
+			else
+			{
+				movespeed = 1.5
+			}
+			
 			switch(weapon_equipped)
 			{
 				case weapon.shotgun:
@@ -89,7 +97,6 @@ switch(state)
 				sprite_index = spr_player_walk
 				break
 			}
-			
 			
 			
 			if keyboard_check_released(ord("A")) || keyboard_check_released(ord("D"))
@@ -117,6 +124,13 @@ switch(state)
 				state = playerstate.sliding
 			}
 		}
+		else
+		{
+			movetime = 0
+		}
+		
+		
+		
 		if groundtime == 2
 		{
 			audio_play_sound(snd_footstep3,8,false)
@@ -133,7 +147,6 @@ switch(state)
 	sprite_index = spr_player_jump
 	
 	xspeed = (rightkey - leftkey)*movespeed
-	if jumpkey{jump = 6}
 	
 	move_acc = 0.1
 	if yspeed < 0 
@@ -143,6 +156,22 @@ switch(state)
 			yspeed /= 2
 		}
 	}
+
+
+	//walljump
+	if place_meeting(x+1,y,obj_surface) && shiftkey
+	{
+		state = playerstate.walljump
+		i_xscale = 1
+	}
+	if place_meeting(x-1,y,obj_surface)&& shiftkey
+	{
+		state = playerstate.walljump
+		i_xscale = -1
+	}
+	
+	
+	//floor hit hahahahahahhaahhH!AHAHAHAHAHAH
 	if grounded
 	{
 		if shiftkey && abs(current_xspeed) > movespeed
@@ -156,6 +185,74 @@ switch(state)
 		}
 	}
 	break
+	
+	
+//when you shoot muahahahahahahahahhaa abnd also airborne
+	case playerstate.fired:
+	sprite_index = spr_player_fired//safe
+	xspeed = (rightkey - leftkey)*movespeed
+	firetimer = 13
+	
+	
+	if current_xspeed != 0
+	{
+		//i_xscale = -sign(current_xspeed)//not safe dont work
+	}
+	if sign(xspeed) == sign(current_xspeed)
+	{
+		if abs(current_xspeed) >= abs(xspeed)
+		{	
+			move_acc = 0.0//safe?
+		}
+	}
+	else
+	{
+		move_acc = 0.1
+	}
+	
+	if place_meeting(x+1,y,obj_surface) && shiftkey
+	{
+		state = playerstate.walljump
+		i_xscale = 1
+	}
+	if place_meeting(x-1,y,obj_surface) && shiftkey
+	{
+		state = playerstate.walljump
+		i_xscale = -1
+	}
+	
+	
+	//floor hit chuckle chuickel hahahah hahaa......
+	if grounded{state = playerstate.normal}
+	break
+
+
+	case playerstate.walljump:
+	//walljumping
+	
+	//yspeed = clamp(yspeed,-infinity,2)
+	if yspeed > 2 {yspeed -= 0.5}
+	fallspeed = 0.1
+	xspeed = 0
+	i = rightkey - leftkey
+	if jump > 0
+	{
+		yspeed = -4
+		current_xspeed = -i_xscale*3 + i
+		i_xscale *= -1
+		state = playerstate.airborne
+	}
+	sprite_index = spr_player_walljump
+	if grounded{state = playerstate.normal}
+	
+	if !place_meeting(x+i_xscale,y,obj_surface)
+	{
+		state = playerstate.airborne
+	}
+	
+	break
+
+
 
 
 	case playerstate.sliding:
@@ -171,9 +268,8 @@ switch(state)
 	}
 	
 	mask_index = spr_player_slide
-	if current_xspeed != 0 {image_xscale = sign(current_xspeed)}
+	if current_xspeed != 0 {i_xscale = sign(current_xspeed)}
 	firetimer = 60
-	if jumpkey{jump = 6}
 
 
 	//yspeed = clamp(yspeed, 0, infinity)
@@ -188,6 +284,11 @@ switch(state)
 	if groundtime = 0
 	{
 		audio_stop_sound(snd_slide)
+		if !shiftkey
+		{
+			audio_stop_sound(snd_slide)
+			state = playerstate.normal
+		}
 	}
 	if groundtime = 1
 	{
@@ -210,7 +311,7 @@ switch(state)
 			audio_play_sound(snd_skid,8,false)
 			state = playerstate.airborne
 		}
-		if abs(current_xspeed) <= movespeed
+		if abs(current_xspeed) <= 0.6
 		{
 			audio_stop_sound(snd_slide)
 			state = playerstate.normal
@@ -218,7 +319,7 @@ switch(state)
 	}
 	else
 	{
-		if abs(current_xspeed) <= 3
+		if abs(current_xspeed) <= 1
 		{
 			audio_stop_sound(snd_slide)
 			state = playerstate.crawling
@@ -238,7 +339,7 @@ switch(state)
 	if i != 0
 	{
 		sprite_index = spr_player_crawl
-		image_xscale = sign(i)
+		i_xscale = sign(i)
 		if floor(image_index*8)/8 == 1 || floor(image_index*8)/8 == 3
 		{
 			current_xspeed = i
@@ -256,31 +357,29 @@ switch(state)
 	}
 	break
 
-	//when you shoot muahahahahahahahahhaa
-	case playerstate.fired:
-	sprite_index = spr_player_fired
-	xspeed = rightkey - leftkey
-	firetimer = 13
-	
-	if current_xspeed != 0
-	{
-		image_xscale = -sign(current_xspeed)
-		
-	}
-	if sign(xspeed) == sign(current_xspeed)
-	{
-		if abs(current_xspeed) >= abs(xspeed)
-		{	
-			move_acc = 0.0
-		}
-	}
-	else
-	{
-		move_acc = 0.1
-	}
-	if grounded{state = playerstate.normal}
-	break
 }
+
+//movement again ig
+if grounded
+{
+	if abs(current_xspeed - xspeed) > 5.1
+	{
+		move_acc = 0.4
+	}
+}
+if current_xspeed > xspeed{current_xspeed -= move_acc}
+if current_xspeed < xspeed{current_xspeed += move_acc}
+
+if abs(current_xspeed - xspeed) < move_acc{current_xspeed = xspeed}
+
+yspeed += fall_acc
+
+//idk mask stuff
+if xspeed != 0 && state != playerstate.walljump
+{
+	i_xscale = sign(xspeed)
+}
+
 
 // WEAPONS WHY DIDNT I LABEL THIS EARLIER
 firetimer++
@@ -332,10 +431,9 @@ switch(weapon_equipped)
 	*/
 	
 	//floor reload
-	if groundtime = 1 && ammo < 3
+	if grounded = 1 && ammo < 3 && reloading == 0
 	{
-		ammo = 3
-		audio_play_sound(snd_reload,8,false)
+		//audio_play_sound(snd_reload,8,false)
 		reloading = 1
 	}
 	
@@ -346,6 +444,7 @@ switch(weapon_equipped)
 		if reloadtime <= 0
 		{
 			reloading = 0
+			ammo = 3
 		}
 	}
 	else
@@ -359,7 +458,7 @@ switch(weapon_equipped)
 	
 	
 	
-	if state != playerstate.sliding && state != playerstate.crawling
+	if state != playerstate.sliding && state != playerstate.crawling && state != playerstate.walljump
 	{
 		//gun shoot
 		
@@ -402,7 +501,7 @@ switch(weapon_equipped)
 					obj_camera.camera_shake = 5
 					ammo--
 					audio_play_sound(snd_shotgun,8,false)
-					fired = 1
+					//fired = 1
 					
 					if !place_meeting(x,y+yspeed,obj_surface){state = playerstate.fired} else{state = playerstate.normal}
 					firetimer = 0
@@ -427,6 +526,7 @@ switch(weapon_equipped)
 
 
 //floor clip up if in ground and down if in ceiling
+
 if place_meeting(x,y,obj_surface)
 {
 	while(place_meeting(x,y,obj_surface))
@@ -441,6 +541,11 @@ if place_meeting(x,y,obj_surface)
 		}
 	}
 }
+
+
+
+
+
 //floor and ceiling collision
 if yspeed >= 0
 {
@@ -448,7 +553,6 @@ if yspeed >= 0
 	{
 		if yspeed >= 0
 		{
-			fall_acc = 0
 			yspeed = 0
 		}
 		y = floor(y)
@@ -469,6 +573,7 @@ else
 	{
 		yspeed = 0
 		y = ceil(y)
+		jump = 0
 		while !place_meeting(x,y-1,obj_surface)
 		{
 			y--
@@ -477,23 +582,9 @@ else
 	}
 }
 
-//movement again ig
-if grounded
-{
-	if abs(current_xspeed - xspeed) > 5.1
-	{
-		move_acc = 0.4
-	}
-}
-if current_xspeed > xspeed{current_xspeed -= move_acc}
-if current_xspeed < xspeed{current_xspeed += move_acc}
-
-if abs(current_xspeed - xspeed) < move_acc{current_xspeed = xspeed}
-
 //walls 
 if place_meeting(x+current_xspeed,y,obj_surface)
 {
-	
 	if !place_meeting(x+current_xspeed,y-abs(current_xspeed)-1,obj_surface)
 	{
 		while place_meeting(x+current_xspeed,y,obj_surface)
@@ -503,10 +594,10 @@ if place_meeting(x+current_xspeed,y,obj_surface)
 	}
 	else
 	{
-		
 		while !place_meeting(x+sign(current_xspeed),y,obj_surface)
 		{
 			x += sign(current_xspeed)
+			
 			if current_xspeed > 0 {x = floor(x)}
 			if current_xspeed < 0 {x = ceil(x)}
 		}
@@ -515,8 +606,8 @@ if place_meeting(x+current_xspeed,y,obj_surface)
 	}
 }
 
-if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+abs(current_xspeed)+2,obj_surface) && abs(current_xspeed) <= 5
-{
+if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+abs(current_xspeed)+2,obj_surface) && abs(xspeed) <= 6
+{	
 	while !place_meeting(x+current_xspeed,y+1,obj_surface)
 	{
 		y += 0.5
@@ -557,7 +648,7 @@ if keyboard_check_pressed(ord("R"))
 	yspeed = 0
 	current_xspeed = 0
 	x = 777
-	y= 940
+	y = 840
 	obj_camera.x = x
 	obj_camera.y = y
 }

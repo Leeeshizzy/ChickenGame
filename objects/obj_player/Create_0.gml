@@ -8,6 +8,9 @@ move_acc = 0.3
 current_xspeed = 0
 xspeed = 0
 yspeed = 0
+
+walljumpcharge = 0
+
 //fullscreen lmao
 fullscreen = 1
 
@@ -21,9 +24,9 @@ shotgun_sprite = spr_shotgun
 
 
 airshots = 0
-reloadmaxtime = 15
+reloadmaxtime = 10
 
-reloadtime = 30
+reloadtime = 10
 reloading = 0
 reloaduimulti = 1
 
@@ -59,9 +62,20 @@ firetimer = 6
 grounded = 0
 groundtime = 0
 airtime = 0
-
-
 movetime = 0
+
+
+
+
+
+//sprite shit replacements
+i_xscale = 1
+
+
+
+
+
+
 shake = 0
 
 state = playerstate.normal
