@@ -7,6 +7,12 @@ rightclick = mouse_check_button_pressed(mb_right)
 shiftkey = keyboard_check(vk_shift)
 
 shootcd--
+
+//flicker...
+
+flicker *= -1
+
+
 //check if on the FLOOR YAY + gravity n shit
 if place_meeting(x,y+1,obj_surface)
 {
@@ -81,7 +87,7 @@ switch(state)
 			
 			if movetime >= 60
 			{
-				 movespeed = 2
+				 movespeed = 1.5
 			}
 			else
 			{
@@ -117,7 +123,7 @@ switch(state)
 				audio_play_sound(footstep_sound[_footstep_number],8,false)
 			}
 			*/
-			if shiftkey && abs(current_xspeed) > movespeed
+			if shiftkey && abs(current_xspeed) > 3
 			{
 				audio_play_sound(snd_slide,8,true)
 				jump = 0
@@ -159,12 +165,12 @@ switch(state)
 
 
 	//walljump
-	if place_meeting(x+1,y,obj_surface) && shiftkey
+	if place_meeting(x+1,y,obj_surface) 
 	{
 		state = playerstate.walljump
 		i_xscale = 1
 	}
-	if place_meeting(x-1,y,obj_surface)&& shiftkey
+	if place_meeting(x-1,y,obj_surface) 
 	{
 		state = playerstate.walljump
 		i_xscale = -1
@@ -210,12 +216,12 @@ switch(state)
 		move_acc = 0.1
 	}
 	
-	if place_meeting(x+1,y,obj_surface) && shiftkey
+	if place_meeting(x+1,y,obj_surface) 
 	{
 		state = playerstate.walljump
 		i_xscale = 1
 	}
-	if place_meeting(x-1,y,obj_surface) && shiftkey
+	if place_meeting(x-1,y,obj_surface) 
 	{
 		state = playerstate.walljump
 		i_xscale = -1
@@ -235,6 +241,7 @@ switch(state)
 	fallspeed = 0.1
 	xspeed = 0
 	i = rightkey - leftkey
+	if jumpkey
 	if jump > 0
 	{
 		yspeed = -4
@@ -474,15 +481,15 @@ switch(weapon_equipped)
 					var _pellet_count = 0
 					var _pellet_number = 7
 					var h = 0
-		
+				
 					repeat(_pellet_number)
 					{
 					spread_range[_pellet_count] = irandom_range(-30,30)
 					_pellet_count++
 					}
-					repeat(irandom_range(5,6))
+					repeat(irandom_range(_pellet_number-(ceil(_pellet_number/5)),_pellet_number))
 					{
-						with instance_create_layer(x,y-5,"Instances",obj_bullet)
+						with instance_create_layer(x,y-3,"Instances",obj_bullet)
 						{
 							spread_range = other.spread_range[h]
 							h++
@@ -606,7 +613,7 @@ if place_meeting(x+current_xspeed,y,obj_surface)
 	}
 }
 
-if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+abs(current_xspeed)+2,obj_surface) && abs(xspeed) <= 6
+if yspeed >= 0 && !place_meeting(x+current_xspeed,y+1,obj_surface) && place_meeting(x+current_xspeed,y+clamp(abs(current_xspeed),0,3)+2,obj_surface)
 {	
 	while !place_meeting(x+current_xspeed,y+1,obj_surface)
 	{

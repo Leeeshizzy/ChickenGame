@@ -21,14 +21,19 @@ gun_angle = 0
 shootcd = 0
 shotgun_sprite = spr_shotgun
 
-
-
 airshots = 0
 reloadmaxtime = 10
 
 reloadtime = 10
 reloading = 0
 reloaduimulti = 1
+
+//extra
+flicker = 0
+
+
+
+
 
 
 //health

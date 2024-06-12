@@ -23,8 +23,8 @@ if movetime = 1
 }
 */
 //shaking for some reason
-if keyboard_check_pressed(ord("E")){shake += 6}
-if keyboard_check_pressed(ord("Q")){shake -= 6}
+if keyboard_check_pressed(ord("E")){shake += 1}
+if keyboard_check_pressed(ord("Q")){shake -= 2}
 var shake_xoffset = 0
 var shake_yoffset = 0
 var dir = irandom_range(0,360)
@@ -36,6 +36,7 @@ if shake > 0
 if grounded
 {
 	shake_yoffset = 0
+	shake_xoffset += shake*flicker
 }
 //draw sprites 
 var i = 1

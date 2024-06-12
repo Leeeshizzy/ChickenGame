@@ -13,3 +13,6 @@ length = 0
 trail_x[0] = 0
 trail_y[0] = 0
 trail_number = 0
+
+xspeed = 0
+yspeed = 0
