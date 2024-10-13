@@ -39,7 +39,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.4.1.152",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"2d platform shooter test",
   "resources":[
@@ -47,6 +47,7 @@
     {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
     {"id":{"name":"obj_dummy","path":"objects/obj_dummy/obj_dummy.yy",},},
+    {"id":{"name":"obj_hook","path":"objects/obj_hook/obj_hook.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_slope","path":"objects/obj_slope/obj_slope.yy",},},
     {"id":{"name":"obj_surface","path":"objects/obj_surface/obj_surface.yy",},},
@@ -75,6 +76,7 @@
     {"id":{"name":"spr_dustclouds","path":"sprites/spr_dustclouds/spr_dustclouds.yy",},},
     {"id":{"name":"spr_health_bg_ui","path":"sprites/spr_health_bg_ui/spr_health_bg_ui.yy",},},
     {"id":{"name":"spr_health_ui","path":"sprites/spr_health_ui/spr_health_ui.yy",},},
+    {"id":{"name":"spr_hook","path":"sprites/spr_hook/spr_hook.yy",},},
     {"id":{"name":"spr_nothing","path":"sprites/spr_nothing/spr_nothing.yy",},},
     {"id":{"name":"spr_player_arm","path":"sprites/spr_player_arm/spr_player_arm.yy",},},
     {"id":{"name":"spr_player_crawl","path":"sprites/spr_player_crawl/spr_player_crawl.yy",},},

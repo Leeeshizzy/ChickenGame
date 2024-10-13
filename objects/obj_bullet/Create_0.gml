@@ -16,3 +16,4 @@ trail_number = 0
 
 xspeed = 0
 yspeed = 0
+spd = 10

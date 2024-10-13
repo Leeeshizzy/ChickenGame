@@ -5,13 +5,16 @@ enum playerstate
 	fired,
 	sliding,
 	crawling,
-	walljump
+	walljump,
+	flipping
 }
 
 enum weapon
 {
+	unarmed,
 	shotgun,
 	ar15,
 	kamehameha,
 	bbbat,
 }
+

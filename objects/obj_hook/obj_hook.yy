@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_dummy",
+  "%Name":"obj_hook",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_dummy",
+  "name":"obj_hook",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_dummy",
-    "path":"sprites/spr_dummy/spr_dummy.yy",
+    "name":"spr_hook",
+    "path":"sprites/spr_hook/spr_hook.yy",
   },
   "spriteMaskId":null,
   "visible":true,

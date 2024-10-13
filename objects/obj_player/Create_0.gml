@@ -4,15 +4,23 @@ depth = -999
 movespeed = 1.5
 fall_acc = 0.065
 move_acc = 0.3
+
+//speedometer_speed = point_distance(xprevious,yprevious,x,y)
+
 //the actual moving stuff 
 current_xspeed = 0
 xspeed = 0
 yspeed = 0
 
+footsteps_time = 0
+
+//states stuff
 walljumpcharge = 0
+rolltime = 0
+
 
 //fullscreen lmao
-fullscreen = 1
+fullscreen = 0
 
 //gun stuff
 spread_range[0] = irandom_range(-15,15)
@@ -28,11 +36,12 @@ reloadtime = 10
 reloading = 0
 reloaduimulti = 1
 
+recoilstrength = 2
+
 //extra
 flicker = 0
 
-
-
+global.hitstop = 0
 
 
 
@@ -51,8 +60,14 @@ crawltimer = 0
 crawlspeed = 1
 
 
-
-
+//grappling hook
+hookout = false
+hookx = 0
+hooky = 0
+hookstate = "undeployed"
+hookxspeed = 0
+hookyspeed = 0
+retracttime = 0
 
 //test stats
 mute = 0
@@ -60,7 +75,7 @@ test = 0
 
 
 
-//game states
+//game states but like temporary states not like the maion states like an alternate secondary state if you know what im talking about
 jump = 0
 fired = 0
 firetimer = 6
@@ -71,13 +86,8 @@ movetime = 0
 
 
 
-
-
 //sprite shit replacements
 i_xscale = 1
-
-
-
 
 
 

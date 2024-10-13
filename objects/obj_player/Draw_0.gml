@@ -20,7 +20,7 @@ if movetime = 1
 		var _footstep_number = irandom_range(1,4)
 		audio_play_sound(footstep_sound[_footstep_number],8,false)
 	}
-}
+}WHATWHATWHAT
 */
 //shaking for some reason
 if keyboard_check_pressed(ord("E")){shake += 1}
@@ -96,8 +96,19 @@ switch(sprite_index)
 	draw_sprite_ext(spr_player_walk_gun_arm,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 	break
 }
-
-
+//grappling hook
+{
+	if hookstate != "undeployed"
+	{
+		draw_sprite_ext(spr_hook,0,hookx,hooky,1,1,point_direction(hookx,hooky,x,y)+90,c_white,1)
+		draw_line_width(x,y-7,hookx-1,hooky-1,1)
+		
+		
+		
+		
+		
+	}
+}
 //UI
 switch(weapon_equipped)
 {

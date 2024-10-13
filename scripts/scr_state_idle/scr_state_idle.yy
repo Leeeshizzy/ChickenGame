@@ -1,5 +1,5 @@
 {
-  "$GMScript":"",
+  "$GMScript":"v1",
   "%Name":"scr_state_idle",
   "isCompatibility":false,
   "isDnD":false,

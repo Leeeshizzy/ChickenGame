@@ -1,8 +1,8 @@
-var _speed = 10
+
 	if (lifetime < max_lifetime/* - abs(spread_range/6 )*/)
 	{
-		xspeed = (_speed * cos((dir+spread_range)*(pi/180)))
-		yspeed = (_speed * sin((dir+spread_range)*(pi/180)))
+		xspeed = (spd * cos((dir+spread_range)*(pi/180)))
+		yspeed = (spd * sin((dir+spread_range)*(pi/180)))
 		x += xspeed
 		y -= yspeed
 		if place_meeting(x,y,obj_surface)
@@ -16,7 +16,7 @@ var _speed = 10
 	{
 		instance_destroy(id)
 	}
-	var hypotenuse = sqrt(abs(sqr((_speed * cos(dir*(pi/180)))*length) + sqr((_speed * sin(dir*(pi/180)))*length)))
+	var hypotenuse = sqrt(abs(sqr((spd * cos(dir*(pi/180)))*length) + sqr((spd * sin(dir*(pi/180)))*length)))
 //trail
 trail_x[trail_number] = x
 trail_y[trail_number] = y
