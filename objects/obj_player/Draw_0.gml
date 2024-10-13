@@ -22,6 +22,13 @@ if movetime = 1
 	}
 }WHATWHATWHAT
 */
+
+if hookstate != "undeployed"
+{
+	draw_sprite_ext(spr_hook,0,hookx,hooky,1,1,point_direction(hookx,hooky,x,y)+90,c_white,1)
+	draw_line_width(x,y-7,hookx-1,hooky-1,1)	
+}
+
 //shaking for some reason
 if keyboard_check_pressed(ord("E")){shake += 1}
 if keyboard_check_pressed(ord("Q")){shake -= 2}
@@ -97,18 +104,7 @@ switch(sprite_index)
 	break
 }
 //grappling hook
-{
-	if hookstate != "undeployed"
-	{
-		draw_sprite_ext(spr_hook,0,hookx,hooky,1,1,point_direction(hookx,hooky,x,y)+90,c_white,1)
-		draw_line_width(x,y-7,hookx-1,hooky-1,1)
-		
-		
-		
-		
-		
-	}
-}
+
 //UI
 switch(weapon_equipped)
 {

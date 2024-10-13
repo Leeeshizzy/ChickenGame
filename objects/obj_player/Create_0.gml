@@ -36,7 +36,7 @@ reloadtime = 10
 reloading = 0
 reloaduimulti = 1
 
-recoilstrength = 2
+recoilstrength = 3
 
 //extra
 flicker = 0

@@ -30,8 +30,8 @@ switch state
 		var pulldirx = dcos(point_direction(p.x,p.y,x,y))
 		var pulldiry = dsin(point_direction(p.x,p.y,x,y))
 		
-		p.current_xspeed += pulldirx/2
-		p.yspeed -= pulldiry/2
+		p.current_xspeed += pulldirx/3
+		p.yspeed -= pulldiry/3
 		
 		if distance_to_object(obj_player) < 25
 		{

@@ -489,7 +489,7 @@ if global.hitstop <= 0
 			hookx = x
 			hooky = y-7
 			hookstate = "airborne"
-			var _hooklaunchspeed = 6
+			var _hooklaunchspeed = 8
 			var _hookxdir = dcos(point_direction(x,y,mouse_x,mouse_y))
 			var _hookydir = -dsin(point_direction(x,y,mouse_x,mouse_y))
 			hookout = true
@@ -519,59 +519,74 @@ if global.hitstop <= 0
 		}
 		*/
 	}
-	if hookout
-	{
-		switch hookstate
-		{
-			case "airborne":
-			
-			hookyspeed += 0.2
-			if position_meeting(hookx,hooky,obj_surface)
-			{
-				hookxspeed = 0
-				hookyspeed = 0
-				hookstate = "latched"
-			}
-			break
-			
-			case "latched":
-			if rightclick
-			{
-				hookstate = "pulling"
-			}
-			break
-			
-			//pulling is pulling the player
-			case "pulling":
-			var pulldirx = dcos(point_direction(x,y,hookx,hooky))
-			var pulldiry = dsin(point_direction(x,y,hookx,hooky))
-			current_xspeed += pulldirx/2
-			yspeed -= pulldiry/2
-			if point_distance(x,y,hookx,hooky) <= 25
-			{
-				hookstate = "undeployed"
-			}
-			break
-			
-			
-			//retracting is when the hook is not attached to anything when pulled
-			case "retracting":
-			retracttime++
-			var pulldirx = dcos(point_direction(hookx,hooky,x,y))
-			var pulldiry = dsin(point_direction(hookx,hooky,x,y))
-			hookxspeed += pulldirx*1.5
-			hookyspeed -= pulldiry*1.5
-			if point_distance(x,y,hookx,hooky) <= 30 || retracttime > 60
-			{
-				hookstate = "undeployed"
-				retracttime = 0
-			}
-			break
-		}
-		hookx += hookxspeed 
-		hooky += hookyspeed
 
+	switch hookstate
+	{
+		case "airborne":
+			
+		hookyspeed += 0.2
+		if position_meeting(hookx,hooky,obj_surface)
+		{
+			hookxspeed = 0
+			hookyspeed = 0
+			hookstate = "latched"
+			
+			if point_distance(hookx,hooky,x,y) >= 250
+			{
+				hookstate = "retracting"
+			}
+		}
+		if mouse_check_button_released(mb_right)
+		{
+			hookstate = "retracting"
+		}
+		break
+			
+		case "latched":
+		if rightclick
+		{
+			hookstate = "pulling"
+		}
+		
+		if point_distance(hookx,hooky,x,y) >= 250
+		{
+			hookstate = "retracting"
+		}
+		
+		
+		break
+			
+		//pulling is pulling the player
+		case "pulling":
+		var pulldirx = dcos(point_direction(x,y,hookx,hooky))
+		var pulldiry = dsin(point_direction(x,y,hookx,hooky))
+		current_xspeed += pulldirx*0.4
+		yspeed -= pulldiry*0.4
+		
+		
+		if mouse_check_button_released(mb_right)
+		{
+			hookstate = "retracting"
+		}
+		break	
+		//retracting is when the hook is not attached to anything when pulled
+		case "retracting":
+		retracttime++
+		var pulldirx = dcos(point_direction(hookx,hooky,x,y))
+		var pulldiry = dsin(point_direction(hookx,hooky,x,y))
+		hookx += pulldirx*20
+		hooky -= pulldiry*20
+		hookxspeed = 0
+		hookyspeed = 0
+		if point_distance(x,y,hookx,hooky) <= 30 || retracttime > 60
+		{
+			hookstate = "undeployed"
+			retracttime = 0
+		}
+		break
 	}
+	hookx += hookxspeed 
+	hooky += hookyspeed
 
 	// WEAPONS WHY DIDNT I LABEL THIS EARLIER
 	firetimer++
