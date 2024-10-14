@@ -493,8 +493,8 @@ if global.hitstop <= 0
 			var _hookxdir = dcos(point_direction(x,y,mouse_x,mouse_y))
 			var _hookydir = -dsin(point_direction(x,y,mouse_x,mouse_y))
 			hookout = true
-			hookxspeed = current_xspeed + (_hookxdir*_hooklaunchspeed)
-			hookyspeed = yspeed + (_hookydir*_hooklaunchspeed)
+			hookxspeed = /*current_xspeed + */(_hookxdir*_hooklaunchspeed)
+			hookyspeed = /*yspeed + */(_hookydir*_hooklaunchspeed)
 		}
 		else
 		{
@@ -525,20 +525,21 @@ if global.hitstop <= 0
 		case "airborne":
 			
 		hookyspeed += 0.2
+		while !position_meeting(hookx,hooky,obj_surface)
+		{
+			hookx += hookxspeed 
+			hooky += hookyspeed
+		}
+		
 		if position_meeting(hookx,hooky,obj_surface)
 		{
 			hookxspeed = 0
 			hookyspeed = 0
 			hookstate = "latched"
-			
 			if point_distance(hookx,hooky,x,y) >= 250
 			{
 				hookstate = "retracting"
 			}
-		}
-		if mouse_check_button_released(mb_right)
-		{
-			hookstate = "retracting"
 		}
 		break
 			
@@ -560,8 +561,8 @@ if global.hitstop <= 0
 		case "pulling":
 		var pulldirx = dcos(point_direction(x,y,hookx,hooky))
 		var pulldiry = dsin(point_direction(x,y,hookx,hooky))
-		current_xspeed += pulldirx*0.4
-		yspeed -= pulldiry*0.4
+		current_xspeed += pulldirx*0.5
+		yspeed -= pulldiry*0.5
 		
 		
 		if mouse_check_button_released(mb_right)
