@@ -126,7 +126,7 @@ if global.hitstop <= 0
 					image_speed = 1
 				}
 			
-				if floor(image_index) == 0 || floor(image_index) == 4
+				if floor(image_index) == 0 || floor(image_index) == 2
 				{
 					footsteps_time++
 				}
@@ -180,8 +180,15 @@ if global.hitstop <= 0
 	
 	
 		case playerstate.airborne:
-		sprite_index = spr_player_jump
-	
+		
+		if yspeed <= 1
+		{
+			sprite_index = spr_player_jump
+		}
+		else
+		{
+			sprite_index = spr_player_fall
+		}
 		xspeed = (rightkey - leftkey)*movespeed
 	
 		if sign(xspeed) == sign(current_xspeed)
@@ -231,7 +238,7 @@ if global.hitstop <= 0
 	
 	
 		case playerstate.flipping:
-		sprite_index = spr_player_roll//safe
+		sprite_index = spr_player_roll//safe//NOT SAGE
 		xspeed = (rightkey - leftkey)*movespeed
 		firetimer = 13
 	
