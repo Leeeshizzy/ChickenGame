@@ -181,7 +181,7 @@ if global.hitstop <= 0
 	
 		case playerstate.airborne:
 		
-		if yspeed <= 1
+		if yspeed <= -1
 		{
 			sprite_index = spr_player_jump
 		}
