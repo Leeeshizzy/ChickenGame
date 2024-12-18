@@ -71,7 +71,7 @@
     {"name":"spr_player_walk_gun_arm","order":3,"path":"sprites/spr_player_walk_gun_arm/spr_player_walk_gun_arm.yy",},
     {"name":"spr_player_walk_gun","order":1,"path":"sprites/spr_player_walk_gun/spr_player_walk_gun.yy",},
     {"name":"spr_player_walk_old","order":11,"path":"sprites/spr_player_walk_old/spr_player_walk_old.yy",},
-    {"name":"spr_player_walk","order":12,"path":"sprites/spr_player_walk/spr_player_walk.yy",},
+    {"name":"spr_player_walk","order":1,"path":"sprites/spr_player_walk/spr_player_walk.yy",},
     {"name":"spr_player_walljump","order":8,"path":"sprites/spr_player_walljump/spr_player_walljump.yy",},
     {"name":"spr_reload_ui","order":5,"path":"sprites/spr_reload_ui/spr_reload_ui.yy",},
     {"name":"spr_shotgun_fired","order":6,"path":"sprites/spr_shotgun_fired/spr_shotgun_fired.yy",},
