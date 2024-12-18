@@ -77,7 +77,8 @@ if global.hitstop <= 0
 				yspeed = -4.2
 				if abs(current_xspeed) > 1.4
 				{
-					audio_play_sound(snd_skid,8,false)
+					var i = 
+					audio_play_sound(snd_skid,8,false,1,0,i)
 				}
 				else
 				{
@@ -90,7 +91,7 @@ if global.hitstop <= 0
 				movetime ++
 			
 			
-			
+			//momentum (????????????)
 				if weapon_equipped != weapon.shotgun
 				{
 					if movetime = 2{movespeed = abs(current_xspeed)}
