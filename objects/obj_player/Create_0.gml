@@ -68,7 +68,7 @@ hookstate = "undeployed"
 hookxspeed = 0
 hookyspeed = 0
 retracttime = 0
-
+hooklength = 0
 //test stats
 mute = 0
 test = 0

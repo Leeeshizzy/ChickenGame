@@ -126,7 +126,7 @@ if global.hitstop <= 0
 					image_speed = 1
 				}
 			
-				if floor(image_index) == 0 || floor(image_index) == 2
+				if floor(image_index) == 0 || floor(image_index) == 4
 				{
 					footsteps_time++
 				}
@@ -485,7 +485,6 @@ if global.hitstop <= 0
 	{
 		if hookstate == "undeployed"
 		{
-			
 			hookx = x
 			hooky = y-7
 			hookstate = "airborne"
@@ -498,6 +497,7 @@ if global.hitstop <= 0
 		}
 		else
 		{
+			
 			if hookstate != "latched"
 			{
 				hookstate = "retracting"
@@ -525,11 +525,24 @@ if global.hitstop <= 0
 		case "airborne":
 			
 		hookyspeed += 0.2
-		while !position_meeting(hookx,hooky,obj_surface)
+		
+		for (var i = 0; i < 50; i++;)
 		{
 			hookx += hookxspeed 
 			hooky += hookyspeed
+			
+			if position_meeting(hookx,hooky,obj_surface)
+			{
+				i = 50	
+			}
+			
 		}
+		if !position_meeting(hookx,hooky,obj_surface)
+		{
+			hookstate = "undeployed"
+		}
+		
+		
 		
 		if position_meeting(hookx,hooky,obj_surface)
 		{
@@ -538,7 +551,7 @@ if global.hitstop <= 0
 			hookstate = "latched"
 			if point_distance(hookx,hooky,x,y) >= 250
 			{
-				hookstate = "retracting"
+				//hookstate = "retracting"
 			}
 		}
 		break
