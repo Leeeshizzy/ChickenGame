@@ -42,7 +42,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"2d platform shooter test",
   "resources":[
@@ -59,6 +59,7 @@
     {"id":{"name":"scr_state_idle","path":"scripts/scr_state_idle/scr_state_idle.yy",},},
     {"id":{"name":"scr_state_walking","path":"scripts/scr_state_walking/scr_state_walking.yy",},},
     {"id":{"name":"mus_test","path":"sounds/mus_test/mus_test.yy",},},
+    {"id":{"name":"mus_test2","path":"sounds/mus_test2/mus_test2.yy",},},
     {"id":{"name":"snd_flying","path":"sounds/snd_flying/snd_flying.yy",},},
     {"id":{"name":"snd_footstep1","path":"sounds/snd_footstep1/snd_footstep1.yy",},},
     {"id":{"name":"snd_footstep2","path":"sounds/snd_footstep2/snd_footstep2.yy",},},
