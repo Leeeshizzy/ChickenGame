@@ -325,7 +325,7 @@ if global.hitstop <= 0
 		if yspeed > 2 {yspeed -= 0.5}
 		fallspeed = 0.1
 		xspeed = 0
-		i = rightkey - leftkey
+		var i = rightkey - leftkey
 		if jumpkey
 		if jump > 0
 		{
@@ -861,7 +861,7 @@ if global.hitstop <= 0
 			mute = 1
 		}
 	}
-	audio_sound_gain(mus_test,mute,0)
+	audio_sound_gain(mus_test2,mute,0)
 	if keyboard_check_pressed(ord("G"))
 	{
 		if weapon_equipped == weapon.shotgun
