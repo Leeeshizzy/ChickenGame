@@ -77,8 +77,8 @@ if global.hitstop <= 0
 				yspeed = -4.2
 				if abs(current_xspeed) > 1.4
 				{
-					var i = 
-					audio_play_sound(snd_skid,8,false,1,0,i)
+					
+					audio_play_sound(snd_skid,8,false)
 				}
 				else
 				{
@@ -325,7 +325,7 @@ if global.hitstop <= 0
 		if yspeed > 2 {yspeed -= 0.5}
 		fallspeed = 0.1
 		xspeed = 0
-		i = rightkey - leftkey
+		var i = rightkey - leftkey
 		if jumpkey
 		if jump > 0
 		{
