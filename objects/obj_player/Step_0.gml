@@ -77,8 +77,8 @@ if global.hitstop <= 0
 				yspeed = -4.2
 				if abs(current_xspeed) > 1.4
 				{
-					var i = 
-					audio_play_sound(snd_skid,8,false,1,0,i)
+					
+					audio_play_sound(snd_skid,8,false)
 				}
 				else
 				{
