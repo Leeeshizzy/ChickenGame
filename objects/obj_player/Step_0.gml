@@ -181,9 +181,10 @@ if global.hitstop <= 0
 				*/
 				if shiftkey
 				{
-					if abs(current_xspeed) > 3
+					if abs(current_xspeed) >= 2.75
 					{
 						audio_play_sound(snd_slide,8,true)
+						audio_play_sound(snd_slidethud,8,false)
 						jump = 0
 						state = playerstate.sliding
 					}
@@ -222,16 +223,16 @@ if global.hitstop <= 0
 		}
 		xspeed = (rightkey - leftkey)*movespeed
 	
-		if sign(xspeed) == sign(current_xspeed)
+		if sign(xspeed) == -sign(current_xspeed)
+		{
+			move_acc = 0.1
+		}
+		else
 		{
 			if abs(current_xspeed) >= abs(xspeed)
 			{	
 				move_acc = 0.0//safe?
 			}
-		}
-		else
-		{
-			move_acc = 0.1
 		}
 	
 		if yspeed < 0 
@@ -302,12 +303,6 @@ if global.hitstop <= 0
 		if grounded{state = playerstate.normal}
 		break
 
-	
-	
-	
-	
-	
-	
 	//when you shoot muahahahahahahahahhaa abnd also airborne
 		case playerstate.fired:
 		sprite_index = spr_player_fired//safe
@@ -621,7 +616,7 @@ if global.hitstop <= 0
 		
 		if !mouse_check_button(mb_right)
 		{
-			hookstate = "retracting"
+			hookstate = "undeployed"
 		}
 		break	
 		//retracting is when the hook is not attached to anything when pulled

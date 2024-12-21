@@ -44,6 +44,7 @@
     {"name":"snd_reload","order":8,"path":"sounds/snd_reload/snd_reload.yy",},
     {"name":"snd_skid","order":1,"path":"sounds/snd_skid/snd_skid.yy",},
     {"name":"snd_slide","order":7,"path":"sounds/snd_slide/snd_slide.yy",},
+    {"name":"snd_slidethud","order":10,"path":"sounds/snd_slidethud/snd_slidethud.yy",},
     {"name":"snd_wind","order":6,"path":"sounds/snd_wind/snd_wind.yy",},
     {"name":"newsprites","order":10,"path":"sprites/newsprites/newsprites.yy",},
     {"name":"spr_bucket","order":1,"path":"sprites/spr_bucket/spr_bucket.yy",},

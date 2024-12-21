@@ -69,6 +69,7 @@
     {"id":{"name":"snd_shotgun","path":"sounds/snd_shotgun/snd_shotgun.yy",},},
     {"id":{"name":"snd_skid","path":"sounds/snd_skid/snd_skid.yy",},},
     {"id":{"name":"snd_slide","path":"sounds/snd_slide/snd_slide.yy",},},
+    {"id":{"name":"snd_slidethud","path":"sounds/snd_slidethud/snd_slidethud.yy",},},
     {"id":{"name":"snd_wind","path":"sounds/snd_wind/snd_wind.yy",},},
     {"id":{"name":"newsprites","path":"sprites/newsprites/newsprites.yy",},},
     {"id":{"name":"spr_bucket","path":"sprites/spr_bucket/spr_bucket.yy",},},
