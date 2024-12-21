@@ -556,7 +556,8 @@ if global.hitstop <= 0
 		{
 			hookxspeed = 0
 			hookyspeed = 0
-			hookstate = "latched"
+			//hookstate = "latched"
+			hookstate = "pulling"
 			if point_distance(hookx,hooky,x,y) >= 250
 			{
 				//hookstate = "retracting"
@@ -586,7 +587,7 @@ if global.hitstop <= 0
 		yspeed -= pulldiry*0.5
 		
 		
-		if mouse_check_button_released(mb_right)
+		if !mouse_check_button(mb_right)
 		{
 			hookstate = "retracting"
 		}
