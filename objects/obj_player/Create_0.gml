@@ -13,10 +13,6 @@ xspeed = 0
 yspeed = 0
 
 
-//delaydsdpivmreiogjh
-walkdelay = 15
-
-
 
 footsteps_time = 0
 

@@ -78,7 +78,7 @@ if global.hitstop <= 0
 			}
 			else
 			{
-				walkdelay = 2
+				walkdelay =2
 				xspeed = 0
 			}
 		}
