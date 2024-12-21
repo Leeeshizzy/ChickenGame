@@ -61,7 +61,31 @@ if global.hitstop <= 0
 	{
 		//normal state like walking n stuff p cool
 		case playerstate.normal:
-		xspeed = (rightkey - leftkey)*movespeed
+		
+		
+		var w = rightkey - leftkey
+		
+		
+		if w != 0 && walkdelay <= 0
+		{
+			xspeed = (rightkey - leftkey)*movespeed
+		}
+		else
+		{
+			if w != 0
+			{
+				walkdelay--
+			}
+			else
+			{
+				walkdelay = 5
+				xspeed = 0
+			}
+		}
+		
+		
+		
+		
 		// default state of being on ground and stuff pretty cool
 		if grounded
 		{
@@ -96,8 +120,7 @@ if global.hitstop <= 0
 				{
 					if movetime = 2{movespeed = abs(current_xspeed)}
 					movespeed += 0.015
-					movespeed = clamp(movespeed,1.5,4)
-				
+					movespeed = clamp(movespeed,1.5,3)
 					image_speed = (abs(current_xspeed/1.5)-1/3)
 					image_speed = clamp(image_speed,1,1.7)
 					//image_speed += 0.01
@@ -115,7 +138,14 @@ if global.hitstop <= 0
 					sprite_index = spr_player_walk_gun
 					break
 					case weapon.unarmed:
-					sprite_index = spr_player_walk
+					if movespeed >= 2.75
+					{
+						sprite_index = spr_player_run
+					}
+					else
+					{
+						sprite_index = spr_player_walk
+					}
 					break
 				}
 			
@@ -457,6 +487,7 @@ if global.hitstop <= 0
 	}
 
 	//movement again ig
+	/*
 	if grounded
 	{
 		if abs(current_xspeed - xspeed) > 5.1
@@ -464,6 +495,7 @@ if global.hitstop <= 0
 			move_acc = 0.4
 		}
 	}
+	*/
 	if current_xspeed > xspeed{current_xspeed -= move_acc}
 	if current_xspeed < xspeed{current_xspeed += move_acc}
 

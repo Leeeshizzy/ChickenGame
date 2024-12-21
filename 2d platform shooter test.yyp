@@ -95,6 +95,7 @@
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
     {"id":{"name":"spr_player_old","path":"sprites/spr_player_old/spr_player_old.yy",},},
     {"id":{"name":"spr_player_roll","path":"sprites/spr_player_roll/spr_player_roll.yy",},},
+    {"id":{"name":"spr_player_run_old","path":"sprites/spr_player_run_old/spr_player_run_old.yy",},},
     {"id":{"name":"spr_player_run","path":"sprites/spr_player_run/spr_player_run.yy",},},
     {"id":{"name":"spr_player_slide_fall","path":"sprites/spr_player_slide_fall/spr_player_slide_fall.yy",},},
     {"id":{"name":"spr_player_slide_gun","path":"sprites/spr_player_slide_gun/spr_player_slide_gun.yy",},},
