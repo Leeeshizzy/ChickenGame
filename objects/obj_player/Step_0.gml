@@ -62,26 +62,10 @@ if global.hitstop <= 0
 		//normal state like walking n stuff p cool
 		case playerstate.normal:
 		
+	
 		
-		var w = rightkey - leftkey
-		
-		
-		if w != 0 && walkdelay <= 0
-		{
 			xspeed = (rightkey - leftkey)*movespeed
-		}
-		else
-		{
-			if w != 0
-			{
-				walkdelay--
-			}
-			else
-			{
-				walkdelay =2
-				xspeed = 0
-			}
-		}
+	
 		
 		
 		
@@ -223,18 +207,26 @@ if global.hitstop <= 0
 		}
 		xspeed = (rightkey - leftkey)*movespeed
 	
-		if sign(xspeed) == -sign(current_xspeed)
+	
+		
+	
+		if abs(current_xspeed) >= 3
 		{
-			move_acc = 0.1
+			
+			if sign(xspeed) == -sign(current_xspeed)
+			{
+				move_acc = 0.1
+			}
+			else
+			{
+				move_acc = 0
+			}
 		}
 		else
 		{
-			if abs(current_xspeed) >= abs(xspeed)
-			{	
-				move_acc = 0.0//safe?
-			}
+			move_acc = 0.1
 		}
-	
+		
 		if yspeed < 0 
 		{
 			if keyboard_check_released(vk_space)
