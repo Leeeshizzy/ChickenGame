@@ -246,16 +246,18 @@ if global.hitstop <= 0
 			}
 		}
 		//walljump
-		if place_meeting(x+1,y,obj_surface) 
+		
+		if place_meeting(x+1,y-1,obj_surface) 
 		{
 			state = playerstate.walljump
 			i_xscale = 1
 		}
-		if place_meeting(x-1,y,obj_surface) 
+		if place_meeting(x-1,y-1,obj_surface) 
 		{
 			state = playerstate.walljump
 			i_xscale = -1
 		}
+		
 		//floor hit chuckle chuickel hahahah hahaa......
 		if grounded{state = playerstate.normal}
 		break
@@ -344,12 +346,14 @@ if global.hitstop <= 0
 		xspeed = 0
 		var i = rightkey - leftkey
 		if jumpkey
-		if jump > 0
 		{
-			yspeed = -4
-			current_xspeed = -i_xscale*3 + i
-			//i_xscale *= -1
-			state = playerstate.airborne
+			if jump > 0
+			{
+				yspeed = -4
+				current_xspeed = -i_xscale*3 + i
+				//i_xscale *= -1
+				state = playerstate.airborne
+			}
 		}
 		sprite_index = spr_player_walljump
 		if grounded{state = playerstate.normal}
