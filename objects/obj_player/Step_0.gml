@@ -164,10 +164,11 @@ if global.hitstop <= 0
 					{
 						_footstep_number++
 					}
-
-
-
-					audio_play_sound(footstep_sound[_footstep_number],8,false)
+					
+					var pitchshift = irandom_range(-10,10)/50
+					
+					
+					audio_play_sound(footstep_sound[_footstep_number],8,false,1,0,pitchshift+1)
 					
 					
 					nore = _footstep_number
