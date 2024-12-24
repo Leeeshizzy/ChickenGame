@@ -90,7 +90,7 @@ if global.hitstop <= 0
 				}
 				else
 				{
-					audio_play_sound(snd_footstep2,8,false)
+					audio_play_sound(snd_slidethud,8,false)
 				}
 			}
 
@@ -168,7 +168,12 @@ if global.hitstop <= 0
 					var pitchshift = irandom_range(-10,10)/50
 					
 					
+					
+					
 					audio_play_sound(footstep_sound[_footstep_number],8,false,1,0,pitchshift+1)
+					
+					
+					
 					
 					
 					nore = _footstep_number
@@ -205,7 +210,7 @@ if global.hitstop <= 0
 		
 			if groundtime == 2
 			{
-				audio_play_sound(snd_footstep3,8,false)
+				audio_play_sound(snd_slidethud,8,false)
 			}
 		}
 		else // when you like jump or fall off something ig
