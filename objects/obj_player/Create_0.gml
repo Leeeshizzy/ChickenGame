@@ -57,6 +57,9 @@ footstep_sound[2] = snd_footstep2
 footstep_sound[3] = snd_footstep3
 footstep_sound[4] = snd_footstep4
 
+nore = 0
+
+
 //crawl stuff
 crawltimer = 0
 crawlspeed = 1

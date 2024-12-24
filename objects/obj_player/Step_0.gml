@@ -152,8 +152,27 @@ if global.hitstop <= 0
 			
 				if footsteps_time == 1//floor(image_index*8)/8 == 0 || floor(image_index*8)/8 == 2
 				{
+					
+					
 					var _footstep_number = irandom_range(1,4)
+					
+					if _footstep_number = nore
+					{
+						_footstep_number = irandom_range(1,3)
+					}
+					if _footstep_number = nore
+					{
+						_footstep_number++
+					}
+
+
+
 					audio_play_sound(footstep_sound[_footstep_number],8,false)
+					
+					
+					nore = _footstep_number
+					
+					
 				}
 			
 				/*
