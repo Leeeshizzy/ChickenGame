@@ -82,7 +82,7 @@ if global.hitstop <= 0
 			}
 			if jump >= 1
 			{
-				yspeed = -4.2
+				yspeed = -3.5
 				if abs(current_xspeed) > 1.4
 				{
 					
@@ -224,7 +224,7 @@ if global.hitstop <= 0
 		}
 		else
 		{
-			if sign(xspeed) == sign(current_xspeed)
+			if sign(xspeed) == sign(current_xspeed) && abs(current_xspeed) > 1.5
 			{
 				move_acc = 0
 			}
@@ -254,17 +254,17 @@ if global.hitstop <= 0
 		}
 		//walljump
 		
-		if place_meeting(x+1,y-1,obj_surface) 
+		if place_meeting(x+1,y,obj_surface) 
 		{
 			state = playerstate.walljump
 			i_xscale = 1
 		}
-		if place_meeting(x-1,y-1,obj_surface) 
+		if place_meeting(x-1,y,obj_surface) 
 		{
 			state = playerstate.walljump
 			i_xscale = -1
 		}
-		
+
 		//floor hit chuckle chuickel hahahah hahaa......
 		if grounded{state = playerstate.normal}
 		break
@@ -429,7 +429,7 @@ if global.hitstop <= 0
 			if jump > 0 && grounded
 			{
 				yspeed = -3 - (abs(current_xspeed)/4)
-				current_xspeed += sign(current_xspeed)*1.5
+				//current_xspeed += sign(current_xspeed)*1.5
 				audio_stop_sound(snd_slide)
 				audio_play_sound(snd_skid,8,false)
 				state = playerstate.airborne
@@ -485,15 +485,8 @@ if global.hitstop <= 0
 	}
 
 	//movement again ig
-	/*
-	if grounded
-	{
-		if abs(current_xspeed - xspeed) > 5.1
-		{
-			move_acc = 0.4
-		}
-	}
-	*/
+
+
 	if current_xspeed > xspeed{current_xspeed -= move_acc}
 	if current_xspeed < xspeed{current_xspeed += move_acc}
 
