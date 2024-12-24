@@ -210,7 +210,7 @@ if global.hitstop <= 0
 	
 		
 	
-		if abs(current_xspeed) >= 3
+		if abs(current_xspeed) > 3
 		{
 			
 			if sign(xspeed) == -sign(current_xspeed)
@@ -224,7 +224,14 @@ if global.hitstop <= 0
 		}
 		else
 		{
-			move_acc = 0.1
+			if sign(xspeed) == sign(current_xspeed)
+			{
+				move_acc = 0
+			}
+			else
+			{
+				move_acc = 0.1
+			}
 		}
 		
 		if yspeed < 0 
