@@ -207,9 +207,7 @@ if global.hitstop <= 0
 		}
 		xspeed = (rightkey - leftkey)*movespeed
 	
-	
-		
-	
+
 		if abs(current_xspeed) > 3
 		{
 			
@@ -252,18 +250,8 @@ if global.hitstop <= 0
 				state = playerstate.flipping
 			}
 		}
-		//walljump
-		
-		if place_meeting(x+1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = 1
-		}
-		if place_meeting(x-1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = -1
-		}
+	
+	
 
 		//floor hit chuckle chuickel hahahah hahaa......
 		if grounded{state = playerstate.normal}
@@ -288,16 +276,7 @@ if global.hitstop <= 0
 			move_acc = 0.1
 		}
 	
-		if place_meeting(x+1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = 1
-		}
-		if place_meeting(x-1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = -1
-		}
+		
 	
 	
 		//floor hit chuckle chuickel hahahah hahaa......
@@ -327,16 +306,7 @@ if global.hitstop <= 0
 			move_acc = 0.1
 		}
 	
-		if place_meeting(x+1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = 1
-		}
-		if place_meeting(x-1,y,obj_surface) 
-		{
-			state = playerstate.walljump
-			i_xscale = -1
-		}
+	
 	
 	
 		//floor hit chuckle chuickel hahahah hahaa......
@@ -344,33 +314,7 @@ if global.hitstop <= 0
 		break
 
 
-		case playerstate.walljump:
-		//walljumping
-	
-		//yspeed = clamp(yspeed,-infinity,2)
-		if yspeed > 2 {yspeed -= 0.5}
-		fallspeed = 0.1
-		xspeed = 0
-		var i = rightkey - leftkey
-		if jumpkey
-		{
-			if jump > 0
-			{
-				yspeed = -4
-				current_xspeed = -i_xscale*3 + i
-				//i_xscale *= -1
-				state = playerstate.airborne
-			}
-		}
-		sprite_index = spr_player_walljump
-		if grounded{state = playerstate.normal}
-	
-		if !place_meeting(x+i_xscale,y,obj_surface)
-		{
-			state = playerstate.airborne
-		}
-	
-		break
+		
 
 
 
@@ -504,7 +448,7 @@ if global.hitstop <= 0
 
 
 	//idk mask stuff
-	if xspeed != 0 && state != playerstate.walljump
+	if xspeed != 0
 	{
 		i_xscale = sign(xspeed)
 	}
@@ -667,7 +611,7 @@ if global.hitstop <= 0
 	
 	
 	
-		if state != playerstate.sliding && state != playerstate.crawling && state != playerstate.walljump
+		if state != playerstate.sliding && state != playerstate.crawling
 		{
 			//gun shoot
 		

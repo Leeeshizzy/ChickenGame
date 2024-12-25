@@ -17,7 +17,7 @@ yspeed = 0
 footsteps_time = 0
 
 //states stuff
-walljumpcharge = 0
+
 rolltime = 0
 
 
