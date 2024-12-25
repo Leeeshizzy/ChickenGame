@@ -27,8 +27,8 @@ if place_meeting(x,y,obj_bullet)
 		var bullet = instance_place(x,y,obj_bullet)
 		
 		
-		current_xspeed += (bullet.xspeed/4)
-		yspeed += (bullet.yspeed/-4)
+		current_xspeed += (bullet.xspeed/10)
+		yspeed += (bullet.yspeed/-10)
 		
 		
 		instance_destroy(bullet)
