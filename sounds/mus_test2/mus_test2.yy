@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":44.8,
+  "duration":22.666668,
   "name":"mus_test2",
   "parent":{
     "name":"Music",
@@ -19,7 +19,7 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mus_test2.mp3",
+  "soundFile":"mus_test2.ogg",
   "type":0,
   "volume":1.0,
 }
