@@ -51,7 +51,7 @@ if gun_angle > 90 && gun_angle < 270
 {
 	i = -1
 }
-if firetimer < 15 && state != playerstate.walljump
+if firetimer < 15
 {
 	i_xscale = i
 }
@@ -59,7 +59,7 @@ if firetimer < 15 && state != playerstate.walljump
 draw_sprite_ext(sprite_index,image_index,x+shake_xoffset,y+shake_yoffset,i_xscale,image_yscale,0,c_white,1)
 if weapon_equipped == weapon.shotgun
 {
-	if state != playerstate.sliding && state != playerstate.crawling && state != playerstate.walljump
+	if state != playerstate.sliding && state != playerstate.crawling
 	{
 		if firetimer < 15
 		{
