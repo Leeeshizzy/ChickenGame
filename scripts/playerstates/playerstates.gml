@@ -5,7 +5,7 @@ enum playerstate
 	fired,
 	sliding,
 	crawling,
-	walljump,
+	ledge,
 	flipping
 }
 

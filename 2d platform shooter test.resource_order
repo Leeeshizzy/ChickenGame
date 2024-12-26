@@ -63,6 +63,8 @@
     {"name":"spr_player_fired_arm","order":2,"path":"sprites/spr_player_fired_arm/spr_player_fired_arm.yy",},
     {"name":"spr_player_jump_old","order":14,"path":"sprites/spr_player_jump_old/spr_player_jump_old.yy",},
     {"name":"spr_player_jump","order":3,"path":"sprites/spr_player_jump/spr_player_jump.yy",},
+    {"name":"spr_player_ledge_hitbox_l","order":8,"path":"sprites/spr_player_ledge_hitbox_l/spr_player_ledge_hitbox_l.yy",},
+    {"name":"spr_player_ledge_hitbox_r","order":7,"path":"sprites/spr_player_ledge_hitbox_r/spr_player_ledge_hitbox_r.yy",},
     {"name":"spr_player_ledge","order":6,"path":"sprites/spr_player_ledge/spr_player_ledge.yy",},
     {"name":"spr_player_old","order":10,"path":"sprites/spr_player_old/spr_player_old.yy",},
     {"name":"spr_player_roll","order":2,"path":"sprites/spr_player_roll/spr_player_roll.yy",},

@@ -240,18 +240,52 @@ if global.hitstop <= 0
 			}
 		}
 
-		//flipping
-		if weapon_equipped = weapon.unarmed 
+
+
+
+	
+		//ledge
+		if i_xscale = 1
 		{
-			if leftclick
+			mask_index = spr_player_ledge_hitbox_r
+		}
+		else
+		{
+			mask_index = spr_player_ledge_hitbox_l
+		}
+		if !place_meeting(x,y-3,obj_surface) && place_meeting(x,y+2,obj_surface)
+		{
+			
+			
+			while place_meeting(x,y,obj_surface)
 			{
-				yspeed = -2
-				current_xspeed += sign(xspeed)*2
-				state = playerstate.flipping
+				
+				y-= 0.001
 			}
+			while !place_meeting(x,y+0.1,obj_surface)
+			{
+
+				y+= 0.001
+			}
+			mask_index = spr_player
+			while !place_meeting(x+i_xscale*0.1,y,obj_surface)
+			{
+				x += i_xscale*0.001
+			}
+
+			state = playerstate.ledge
+			sprite_index = spr_player_ledge
+			yspeed = 0
+			current_xspeed = 0
+			xspeed = 0
+			fall_acc = 0
+			audio_play_sound(snd_slidethud,8,false)
 		}
 	
-	
+		mask_index = spr_player
+
+
+
 
 		//floor hit chuckle chuickel hahahah hahaa......
 		if grounded{state = playerstate.normal}
@@ -282,7 +316,37 @@ if global.hitstop <= 0
 		//floor hit chuckle chuickel hahahah hahaa......
 		if grounded{state = playerstate.normal}
 		break
-
+		
+		
+		
+		
+		case playerstate.ledge:
+		xspeed = 0
+		current_xspeed =0
+		yspeed = 0
+		fall_acc = 0
+		
+		if jump > 0
+		{
+			state = playerstate.airborne
+			yspeed = -3
+		}
+		
+		
+		
+		
+		
+		
+		
+		break
+		
+		
+		
+		
+		
+		
+		
+		
 	//when you shoot muahahahahahahahahhaa abnd also airborne
 		case playerstate.fired:
 		sprite_index = spr_player_fired//safe
@@ -429,7 +493,7 @@ if global.hitstop <= 0
 	}
 
 	//movement again ig
-
+	
 
 	if current_xspeed > xspeed{current_xspeed -= move_acc}
 	if current_xspeed < xspeed{current_xspeed += move_acc}
@@ -437,16 +501,16 @@ if global.hitstop <= 0
 	if abs(current_xspeed - xspeed) < move_acc{current_xspeed = xspeed}
 
 	yspeed += fall_acc
-
+	
 	if state != playerstate.normal
 	{
 		movespeed = 1.5
 		image_speed = 1
 		movetime = 0
 	}
-
-
-
+	
+	
+	
 	//idk mask stuff
 	if xspeed != 0
 	{

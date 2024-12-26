@@ -92,6 +92,8 @@
     {"id":{"name":"spr_player_fired","path":"sprites/spr_player_fired/spr_player_fired.yy",},},
     {"id":{"name":"spr_player_jump_old","path":"sprites/spr_player_jump_old/spr_player_jump_old.yy",},},
     {"id":{"name":"spr_player_jump","path":"sprites/spr_player_jump/spr_player_jump.yy",},},
+    {"id":{"name":"spr_player_ledge_hitbox_l","path":"sprites/spr_player_ledge_hitbox_l/spr_player_ledge_hitbox_l.yy",},},
+    {"id":{"name":"spr_player_ledge_hitbox_r","path":"sprites/spr_player_ledge_hitbox_r/spr_player_ledge_hitbox_r.yy",},},
     {"id":{"name":"spr_player_ledge","path":"sprites/spr_player_ledge/spr_player_ledge.yy",},},
     {"id":{"name":"spr_player_old","path":"sprites/spr_player_old/spr_player_old.yy",},},
     {"id":{"name":"spr_player_roll","path":"sprites/spr_player_roll/spr_player_roll.yy",},},
