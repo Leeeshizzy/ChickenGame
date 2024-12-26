@@ -56,8 +56,6 @@
     {"id":{"name":"obj_surface","path":"objects/obj_surface/obj_surface.yy",},},
     {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"id":{"name":"playerstates","path":"scripts/playerstates/playerstates.yy",},},
-    {"id":{"name":"scr_state_idle","path":"scripts/scr_state_idle/scr_state_idle.yy",},},
-    {"id":{"name":"scr_state_walking","path":"scripts/scr_state_walking/scr_state_walking.yy",},},
     {"id":{"name":"mus_test","path":"sounds/mus_test/mus_test.yy",},},
     {"id":{"name":"mus_test2","path":"sounds/mus_test2/mus_test2.yy",},},
     {"id":{"name":"snd_flying","path":"sounds/snd_flying/snd_flying.yy",},},
