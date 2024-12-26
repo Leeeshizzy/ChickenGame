@@ -12,6 +12,7 @@
     {"name":"Shaders","order":10,"path":"folders/Shaders.yy",},
     {"name":"Sounds","order":11,"path":"folders/Sounds.yy",},
     {"name":"Music","order":1,"path":"folders/Sounds/Music.yy",},
+    {"name":"Footsteps","order":11,"path":"folders/Sounds/SFX/Footsteps.yy",},
     {"name":"Sprites","order":14,"path":"folders/Sprites.yy",},
     {"name":"Dummy","order":7,"path":"folders/Sprites/Dummy.yy",},
     {"name":"Old","order":11,"path":"folders/Sprites/Old.yy",},
