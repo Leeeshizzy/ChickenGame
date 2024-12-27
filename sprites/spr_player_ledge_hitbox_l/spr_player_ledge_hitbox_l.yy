@@ -28,8 +28,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Default",
-    "path":"folders/Sprites/Player/Default.yy",
+    "name":"Hitboxes",
+    "path":"folders/Sprites/Player/Hitboxes.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

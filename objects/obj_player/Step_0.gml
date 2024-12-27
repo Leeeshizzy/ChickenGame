@@ -519,7 +519,7 @@ if global.hitstop <= 0
 	
 	
 	//grappling hook YAY!!!!!!!!!!!!!!!!!!!!!!!!!!!! no ones ever made a grtappling hook bef
-	
+	/*
 	if rightclick
 	{
 		if hookstate == "undeployed"
@@ -531,8 +531,8 @@ if global.hitstop <= 0
 			var _hookxdir = dcos(point_direction(x,y,mouse_x,mouse_y))
 			var _hookydir = -dsin(point_direction(x,y,mouse_x,mouse_y))
 			hookout = true
-			hookxspeed = /*current_xspeed + */(_hookxdir*_hooklaunchspeed)
-			hookyspeed = /*yspeed + */(_hookydir*_hooklaunchspeed)
+			hookxspeed = current_xspeed + (_hookxdir*_hooklaunchspeed)
+			hookyspeed = yspeed + (_hookydir*_hooklaunchspeed)
 		}
 		else
 		{
@@ -556,9 +556,8 @@ if global.hitstop <= 0
 				yspeed = other.yspeed+(_hookydir*_hooklaunchspeed)	
 			}
 		}
-		*/
 	}
-
+	*/
 	switch hookstate
 	{
 		case "airborne":
@@ -717,8 +716,7 @@ if global.hitstop <= 0
 						var recoilydir = dsin(recoildir)*recoilstrength
 						
 						
-						recoilx += 7 * cos((recoildir)*(pi/180))
-						recoily -= 7 * sin((recoildir)*(pi/180))
+						
 						
 						
 						yspeed /= 2
