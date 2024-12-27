@@ -253,9 +253,8 @@ if global.hitstop <= 0
 		{
 			mask_index = spr_player_ledge_hitbox_l
 		}
-		if !place_meeting(x,y-5,obj_surface) && place_meeting(x,y+2,obj_surface)
+		if !place_meeting(x,y-3,obj_surface) && place_meeting(x,y+2,obj_surface)
 		{
-			
 			
 			while place_meeting(x,y,obj_surface)
 			{

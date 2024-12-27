@@ -72,7 +72,7 @@ if weapon_equipped == weapon.shotgun
 			{
 				if floor(image_index) == 1 || floor(image_index) == 3
 				{
-					i = 1
+					i = -1
 				}
 			}
 			//draw_sprite_ext(spr_shotgun,0,x+shake_xoffset,y-3+shake_yoffset,1,i_xscale,point_direction(x,y-3,mouse_x,mouse_y),c_white,1)
