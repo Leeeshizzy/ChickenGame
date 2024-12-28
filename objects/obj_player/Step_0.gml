@@ -10,7 +10,7 @@ shiftkey = keyboard_check(vk_shift)
 
 if global.hitstop <= 0
 {
-
+	audio_resume_all()
 	shootcd--
 
 	//flicker...
@@ -579,8 +579,6 @@ if global.hitstop <= 0
 			hookstate = "undeployed"
 		}
 		
-		
-		
 		if position_meeting(hookx,hooky,obj_surface)
 		{
 			hookxspeed = 0
@@ -707,16 +705,30 @@ if global.hitstop <= 0
 							}
 						}
 						//recoil THE RIGHT WAY WHY DIDNT I DO THIS SOONER
-						var recoilx = x
-						var recoily = y
+						
+						
+						mask_index = spr_player_pointblank_hitbox
 						var recoildir = point_direction(x,y,mouse_x,mouse_y)
+						
+						var pbx = x + (dcos(recoildir)*15)
+						var pby = y - (dsin(recoildir)*15)
+						
+						
+						var recoilstrength = 2
+						
+						if place_meeting(pbx,pby,obj_dummy)
+						{
+							recoilstrength = 7
+							global.hitstop = 10
+							
+						}
 						
 						var recoilxdir = dcos(recoildir)*recoilstrength
 						var recoilydir = dsin(recoildir)*recoilstrength
 						
+						mask_index = spr_player
 						
-						
-						
+						audio_play_sound(snd_shotgun_real,8,false)
 						
 						yspeed /= 2
 						//recoil YAYYYYYAYYAYAYAYA YAYAYYA FUCK YEAH WOIOHOOOOOOOOOOOOO
@@ -727,8 +739,8 @@ if global.hitstop <= 0
 					//wtf is this goofy ass code
 						obj_camera.camera_shake = 3
 						ammo--
-						audio_play_sound(snd_shotgun,8,false)
-						//fired = 1
+						
+					
 						
 						if !place_meeting(x,y+yspeed,obj_surface){state = playerstate.fired} else{state = playerstate.normal}
 						firetimer = 0
@@ -750,8 +762,15 @@ if global.hitstop <= 0
 	}
 
 
-
-
+	//shotgun_sound
+	if shotgun_audio_delay = 0
+	{
+		
+	}
+	else
+	{
+		
+	}
 	//floor clip up if in ground and down if in ceiling
 	
 	if place_meeting(x,y,obj_surface)
@@ -921,6 +940,6 @@ if global.hitstop <= 0
 }
 else
 {
-	global.hitstop --
 	image_speed = 0
+	audio_pause_all()
 }

@@ -11,3 +11,7 @@ image_speed = 0
 
 
 grabbed = 0
+
+
+hit_cooldown = 0
+

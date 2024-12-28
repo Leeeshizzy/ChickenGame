@@ -38,7 +38,7 @@ reloadtime = 10
 reloading = 0
 reloaduimulti = 1
 
-recoilstrength = 2
+
 
 //extra
 flicker = 0
@@ -49,6 +49,11 @@ global.hitstop = 0
 
 //health
 hp = 100
+
+//shotgun sound stuff HAHAHAHAHHAHAHAHAA
+
+shotgun_audio_delay = 0
+
 
 
 //stepping sounds
